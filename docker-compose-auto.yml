@@ -1,0 +1,45 @@
+## genereated form chat gpt 3.5 :)
+
+version: '3.9'
+services:
+  scy1:
+    image: scylladb/scylla:latest
+    container_name: scy1
+    environment:
+      - SCYLLA_SEEDS=scy1,scy2,scy3
+      - SCYLLA_LISTEN_ADDRESS=auto
+      - SCYLLA_RPC_ADDRESS=0.0.0.0
+      - SCYLLA_BROADCAST_ADDRESS=eth0
+      - SCYLLA_BROADCAST_RPC_ADDRESS=eth0
+    volumes:
+      - scy_data1:/var/lib/scylla
+    ports:
+      - "9042:9042"
+      - "9160:9160"
+  scy2:
+    image: scylladb/scylla:latest
+    container_name: scy2
+    environment:
+      - SCYLLA_SEEDS=scy1,scy2,scy3
+      - SCYLLA_LISTEN_ADDRESS=auto
+      - SCYLLA_RPC_ADDRESS=0.0.0.0
+      - SCYLLA_BROADCAST_ADDRESS=eth0
+      - SCYLLA_BROADCAST_RPC_ADDRESS=eth0
+    volumes:
+      - scy_data2:/var/lib/scylla
+  scy3:
+    image: scylladb/scylla:latest
+    container_name: scy3
+    environment:
+      - SCYLLA_SEEDS=scy1,scy2,scy3
+      - SCYLLA_LISTEN_ADDRESS=auto
+      - SCYLLA_RPC_ADDRESS=0.0.0.0
+      - SCYLLA_BROADCAST_ADDRESS=eth0
+      - SCYLLA_BROADCAST_RPC_ADDRESS=eth0
+    volumes:
+      - scy_data3:/var/lib/scylla
+
+volumes:
+  scy_data1:
+  scy_data2:
+  scy_data3:

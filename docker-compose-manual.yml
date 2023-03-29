@@ -1,0 +1,63 @@
+version: '3.9'
+
+services:
+  scy1:
+    container_name: scy1
+    hostname: scy1
+    build:
+      context: ./
+      dockerfile: manual.Dockerfile
+    ports:
+      - "7001:7000"
+      - "5431:5433"
+      - "9001:9000"
+      - "9041:9042"
+    volumes:
+      - scy_data1:/var/lib/scylla
+
+  scy2:
+    container_name: scy2
+    hostname: scy2
+    build:
+      context: ./
+      dockerfile: manual.Dockerfile
+    ports:
+      - "7002:7000"
+      - "5432:5433"
+      - "9002:9000"
+      - "9042:9042"
+    volumes:
+      - scy_data2:/var/lib/scylla
+
+  scy3:
+    container_name: scy3
+    hostname: scy3
+    build:
+      context: ./
+      dockerfile: manual.Dockerfile
+    ports:
+      - "7003:7000"
+      - "5433:5433"
+      - "9003:9000"
+      - "9043:9042"
+    volumes:
+      - scy_data3:/var/lib/scylla
+  scy4:
+    container_name: scy4
+    hostname: scy4
+    build:
+      context: ./
+      dockerfile: manual.Dockerfile
+    ports:
+      - "7004:7000"
+      - "5434:5433"
+      - "9004:9000"
+      - "9044:9042"
+    volumes:
+      - scy_data4:/var/lib/scylla
+
+volumes:
+  scy_data1:
+  scy_data2:
+  scy_data3:
+  scy_data4:
