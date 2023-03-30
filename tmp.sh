@@ -1,3 +1,4 @@
+## only test not use in app
 ##save to /test.sh & chmod 755
 it=0
 echo "started $it" >/tmp/ll.log

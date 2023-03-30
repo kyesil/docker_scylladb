@@ -24,7 +24,8 @@ signal.signal(signal.SIGTERM, signal_handler)
 
 try:
     arguments, extra_arguments = commandlineparser.parse()
-    arguments.seeds="scy1,scy2,scy3,scy4"
+    # arguments.seeds="scy1,scy2,scy3"
+    arguments.seeds=os.getenv('SCYLLA_SEEDS')
     setup = scyllasetup.ScyllaSetup(arguments, extra_arguments=extra_arguments)
     print(vars(arguments))
   

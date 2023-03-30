@@ -1,4 +1,9 @@
 version: '3.9'
+volumes:
+  scy_data1:
+  scy_data2:
+  scy_data3:
+  scy_data4:
 
 services:
   scy1:
@@ -13,6 +18,7 @@ services:
       - "9001:9000"
       - "9041:9042"
     volumes:
+      - ./app:/app
       - scy_data1:/var/lib/scylla
 
   scy2:
@@ -27,6 +33,7 @@ services:
       - "9002:9000"
       - "9042:9042"
     volumes:
+      - ./app:/app
       - scy_data2:/var/lib/scylla
 
   scy3:
@@ -41,6 +48,7 @@ services:
       - "9003:9000"
       - "9043:9042"
     volumes:
+      - ./app:/app
       - scy_data3:/var/lib/scylla
   scy4:
     container_name: scy4
@@ -54,10 +62,6 @@ services:
       - "9004:9000"
       - "9044:9042"
     volumes:
+      - ./app:/app
       - scy_data4:/var/lib/scylla
 
-volumes:
-  scy_data1:
-  scy_data2:
-  scy_data3:
-  scy_data4:

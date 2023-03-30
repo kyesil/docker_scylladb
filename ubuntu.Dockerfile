@@ -1,5 +1,6 @@
+## only test not use in app
 FROM ubuntu:devel as scylldb
-# FROM scylladb/scylla as scylldb
+
 
 RUN apt-get update && apt-get -y install gpg wget
 RUN gpg --homedir /tmp --no-default-keyring --keyring /etc/apt/keyrings/scylladb.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys d0a112e067426ab2

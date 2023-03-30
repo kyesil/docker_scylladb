@@ -1,21 +1,16 @@
 #!/bin/bash
-SCYLLA_SEEDS=scy1,scy2,scy3
-SCYLLA_LISTEN_ADDRESS=auto
-SCYLLA_RPC_ADDRESS=0.0.0.0
-SCYLLA_BROADCAST_ADDRESS=eth0
-SCYLLA_BROADCAST_RPC_ADDRESS=eth0
-
+export SCYLLA_SEEDS=scy1,scy2,scy3,scy4
 
 
 if [[ "$HOSTNAME" == "scy1" ]]; then
   echo "leader ..."
 else
   echo "follower.."
-  # sleep 18
+  # sleep 1
 fi
 
-(/entrypoint.sh) & echo "$!" >/entrypoint.pid
-python3 /start_scylla.py 
+(/app/entrypoint_db.sh) & echo "$!" >/tmp/entrypoint_db.pid
+python3 /app/start_scylla.py 
 
 # /usr/bin/supervisord  -c /etc/supervisord.conf
 # start entrypoint background
